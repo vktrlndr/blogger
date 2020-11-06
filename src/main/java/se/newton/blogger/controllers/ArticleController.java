@@ -36,6 +36,8 @@ public class ArticleController {
         if (Objects.nonNull(ar.getById(id))) {
             return ar.save(new Article(id, newArticle.getTitle(), newArticle.getContent()));
         } else return new Article();
+        // How can this be made to return something more distinct to warn about the article not being there?
+        // Should it have a separate check outside of this method?
     }
 
     @DeleteMapping("/deletearticle/{id}")

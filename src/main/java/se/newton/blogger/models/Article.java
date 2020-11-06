@@ -12,7 +12,8 @@ public class Article {
     private int id;
     @Column
     private String title;
-    @Column
+    @Lob
+    @Column(columnDefinition = "text")
     private String content;
     @Column
     private Long published;

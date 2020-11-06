@@ -31,6 +31,10 @@ public class SetupListener implements ApplicationListener<ContextRefreshedEvent>
         ar.save(new Article("Beta", "Dolor sit amet"));
         ar.save(new Article("Gamma", "Dumber data"));
         ar.save(new Article("Delta", "More dummy data"));
+        ar.save(new Article("Epsilon", "A star"));
+        ar.save(new Article("Zeta", "A longer text just to try out the text functionality of the" +
+                " database you know. Filling in characters one by one until this exceeds normal varchar limits" +
+                " and explodes in a cloud of stack traces."));
 
 //        Print out the dummy data using logger
         Iterable<Article> accounts = ar.findAll();
