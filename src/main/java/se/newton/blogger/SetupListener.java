@@ -22,18 +22,18 @@ public class SetupListener implements ApplicationListener<ContextRefreshedEvent>
     private static final Logger logger = LoggerFactory.getLogger(SetupListener.class);
 
     @Autowired
-    private ArticleRepository artrep;
+    private ArticleRepository ar;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         //Create some dummy data
-        artrep.save(new Article("Alpha", "Lorem ipsum"));
-        artrep.save(new Article("Beta", "Dolor sit amet"));
-        artrep.save(new Article("Gamma", "Dumber data"));
-        artrep.save(new Article("Delta", "More dummy data"));
+        ar.save(new Article("Alpha", "Lorem ipsum"));
+        ar.save(new Article("Beta", "Dolor sit amet"));
+        ar.save(new Article("Gamma", "Dumber data"));
+        ar.save(new Article("Delta", "More dummy data"));
 
 //        Print out the dummy data using logger
-        Iterable<Article> accounts = artrep.findAll();
+        Iterable<Article> accounts = ar.findAll();
         Iterator<Article> iteratorA = accounts.iterator();
         while (iteratorA.hasNext()) {
             logger.info("{}", iteratorA.next().toString());

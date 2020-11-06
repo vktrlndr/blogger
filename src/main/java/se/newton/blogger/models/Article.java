@@ -26,6 +26,13 @@ public class Article {
         this.published = Instant.now().getEpochSecond();
     }
 
+    public Article(int id, String title, String content) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.published = Instant.now().getEpochSecond();
+    }
+
     public int getId() { return id; }
 
     public void setId(int id) {
