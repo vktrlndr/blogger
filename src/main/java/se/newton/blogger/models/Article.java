@@ -18,8 +18,7 @@ public class Article {
     @Column
     private Long published;
 
-    public Article() {
-    }
+    public Article() { this.published = Instant.now().getEpochSecond(); }
 
     public Article(String title, String content) {
         this.title = title;
