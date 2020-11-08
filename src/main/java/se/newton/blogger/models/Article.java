@@ -1,15 +1,18 @@
 package se.newton.blogger.models;
 
+import net.minidev.json.JSONUtil;
+
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 
 @Entity
 @Table(name = "articles")
-public class Article {
+public class Article implements Comparable<Article> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @Column
     private String title;
     @Lob
@@ -17,25 +20,35 @@ public class Article {
     private String content;
     @Column
     private Long published;
+    @Column
+    private String subject;
 
     public Article() { this.published = Instant.now().getEpochSecond(); }
 
-    public Article(String title, String content) {
+    public Article(String title, String content, String subject) {
         this.title = title;
         this.content = content;
+        this.subject = subject;
         this.published = Instant.now().getEpochSecond();
     }
 
-    public Article(int id, String title, String content) {
+    public String getSubject() { return subject; }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public Article(Integer id, String title, String content, String subject) {
         this.id = id;
         this.title = title;
         this.content = content;
+        this.subject = subject;
         this.published = Instant.now().getEpochSecond();
     }
 
-    public int getId() { return id; }
+    public Integer getId() { return id; }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -65,5 +78,10 @@ public class Article {
                 ", content='" + content + '\'' +
                 ", published=" + published +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Article a) {
+        return Long.compare(this.published, a.getPublished());
     }
 }

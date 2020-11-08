@@ -27,14 +27,20 @@ public class SetupListener implements ApplicationListener<ContextRefreshedEvent>
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         //Create some dummy data
-        ar.save(new Article("Alpha", "Lorem ipsum"));
-        ar.save(new Article("Beta", "Dolor sit amet"));
-        ar.save(new Article("Gamma", "Dumber data"));
-        ar.save(new Article("Delta", "More dummy data"));
-        ar.save(new Article("Epsilon", "A star"));
+        ar.save(new Article("Alpha", "Lorem ipsum", "Art"));
+        ar.save(new Article("Beta", "Dolor sit amet", "Sports"));
+        ar.save(new Article("Gamma", "Dumber data", "Sports"));
+        ar.save(new Article("Delta", "More dummy data", "Art"));
+        ar.save(new Article("Epsilon", "A star", "Sports"));
         ar.save(new Article("Zeta", "A longer text just to try out the text functionality of the" +
                 " database you know. Filling in characters one by one until this exceeds normal varchar limits" +
-                " and explodes in a cloud of stack traces."));
+                " and explodes in a cloud of stack traces.", "Art"));
+        ar.save(new Article("Eta", "Allt i världen faller i en av två kategorier: " +
+                "sport eller konst", "Art"));
+        ar.save(new Article("Theta", "Det är bara att förhålla sig till detta faktum."
+                , "Sports"));
+        ar.save(new Article("Iota", "Was a band I think", "Art"));
+        ar.save(new Article("Kappa", "Golden Kappa", "Art"));
 
 //        Print out the dummy data using logger
         Iterable<Article> accounts = ar.findAll();
