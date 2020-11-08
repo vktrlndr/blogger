@@ -7,7 +7,6 @@ import se.newton.blogger.models.Article;
 import se.newton.blogger.repositories.ArticleRepository;
 import se.newton.blogger.services.ArticleService;
 
-import java.util.List;
 import java.util.Objects;
 
 @RestController

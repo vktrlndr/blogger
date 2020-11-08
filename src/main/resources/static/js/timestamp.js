@@ -1,3 +1,5 @@
+//This is not really needed but kept in for posterity
+
 function getTime() {
 var d = new Date();
 var curr_hour = d.getHours();

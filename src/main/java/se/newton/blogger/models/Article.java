@@ -10,6 +10,7 @@ import java.time.Instant;
 @Table(name = "articles")
 public class Article implements Comparable<Article> {
 
+    //Columns for the database. @Lob to allow for longer texts as contents.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

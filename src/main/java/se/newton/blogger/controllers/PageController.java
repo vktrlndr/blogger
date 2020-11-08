@@ -32,12 +32,12 @@ public class PageController {
         return "index";
     }
 
-//    @RequestMapping("/all")
-//    public String all(Model model) {
-//        List<Article> articles = aserv.getAll();
-//        model.addAttribute("allarticles", articles);
-//        return "articles";
-//    }
+    @RequestMapping("/all")
+    public String all(Model model) {
+        List<Article> articles = aserv.getAll();
+        model.addAttribute("allarticles", articles);
+        return "articles";
+    }
 
     @PostMapping("/articles/create")
     public String createArticle(@ModelAttribute Article article) {

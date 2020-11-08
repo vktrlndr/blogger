@@ -14,7 +14,16 @@
     <article th:each="a : ${allarticles}">
         <h3 class="title" th:text="${a.title}">Title</h3>
         <p> Subject: <span class="subject" th:text="${a.subject}">subject</span></p>
-        <p> Last updated: <span class="published" th:text="${a.published}">published</span></p>
+        <p hidden> Last updated: <span class="published" th:text="${a.published}">published</span></p>
+<!--        Yes, this is how I solved not knowing javascript. -->
+        <p> Last updated: <script th:inline="javascript">
+/*<![CDATA[*/
+var unixt = [[${a.published}]];
+var date = new Date(unixt*1000);
+document.write(date.toLocaleString("sv-SE"));
+/*]]>*/</script></p>
+
+
         <p class="content" th:text="${a.content}">content</p>
         <br/>
         <hr/>
