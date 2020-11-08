@@ -2,13 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Blogger index page</title>
+    <title>Blogger | Index</title>
     <link th:href="@{/css/main.css}" rel="stylesheet" />
 </head>
 <body>
-<h2>This is the index page</h2>
+<header th:replace="fragments/fragments :: pageheader"/>
+<main><h2>This is the index page</h2>
 <p>
     This page will include some <strong>links</strong>.
 </p>
+</main>
+<footer th:replace="fragments/fragments :: pagefooter"/>
 </body>
 </html>

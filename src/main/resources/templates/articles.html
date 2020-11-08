@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogger | All articles</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+<header th:replace="fragments/fragments :: pageheader"/>
+<h2>All articles currently in the database</h2>
+<main id="articles">
+    <article th:each="a : ${allarticles}">
+        <h2 class="title" th:text="${a.title}">Title</h2>
+        <p> Subject: <span class="subject" th:text="${a.subject}">subject</span></p>
+        <p> Published: <span class="published" th:text="${a.published}">published</span></p>
+        <textarea name="contents" cols="50" rows="5" class="content" th:text="${a.content}" readonly>content</textarea>
+        <br>
+        <a th:href="@{/update/{id}(id=${a.id})}">update</a>
+        <a th:href="@{/articles/delete/{id}(id=${a.id})}">delete</a>
+    </article>
+</main>
+<footer th:replace="fragments/fragments :: pagefooter"/>
+</body>
+</html>

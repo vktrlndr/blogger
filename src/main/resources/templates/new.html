@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogger | Add new entry</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+<header th:replace="fragments/fragments :: pageheader"/>
+<main id="add">
+<form action="#" th:action="@{/articles/create}" th:object="${article}"
+      method="post">
+    <div class="row">
+        <div class="col-25">
+            <label for="title">title</label>
+        </div>
+        <div class="col-75">
+            <input type="text" id="title" name="title" placeholder="title"
+                   th:field="*{title}" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+            <label for="content">Content</label>
+        </div>
+        <div class="col-75">
+                    <textarea id="content" name="content" placeholder="content"
+                              style="height: 200px" th:field="*{content}" required></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <p>
+            <input type="submit" value="Submit" /> <input type="reset"
+                                                          value="Reset" />
+        </p>
+    </div>
+</form>
+</main>
+<footer th:replace="fragments/fragments :: pagefooter"/>
+</body>
+</html>
