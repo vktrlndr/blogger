@@ -8,12 +8,9 @@
 <body>
 <header th:fragment="pageheader">
     <a href="index.html" th:href="@{/}">index</a>
-    <a href="articles.html" th:href="@{/all}">articles</a>
-    <a href="sorted.html" th:href="@{/sorted}">sort by date</a>
+    <a href="articles.html" th:href="@{/all}">update & delete</a>
     <a href="new.html" th:href="@{/new}">new article</a>
 </header>
-<!--<h1>meh</h1>-->
-<!--<p>meh paragraph</p>-->
 <footer th:fragment="pagefooter">
    <p>  <script src="/js/timestamp.js"></script>
        <script>getTime()</script>

@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface ArticleRepository extends JpaRepository<Article, Integer> {
     Article getById(int id);
-
+    Article findByPublished(Long published);
 }

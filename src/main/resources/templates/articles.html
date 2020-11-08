@@ -10,13 +10,15 @@
 <h2>All articles currently in the database</h2>
 <main id="articles">
     <article th:each="a : ${allarticles}">
-        <h2 class="title" th:text="${a.title}">Title</h2>
+        <h3 class="title" th:text="${a.title}">Title</h3>
         <p> Subject: <span class="subject" th:text="${a.subject}">subject</span></p>
-        <p> Published: <span class="published" th:text="${a.published}">published</span></p>
+        <p> Last updated: <span class="published" th:text="${a.published}">published</span></p>
         <textarea name="contents" cols="50" rows="5" class="content" th:text="${a.content}" readonly>content</textarea>
         <br>
         <a th:href="@{/update/{id}(id=${a.id})}">update</a>
         <a th:href="@{/articles/delete/{id}(id=${a.id})}">delete</a>
+        <br/>
+        <hr/>
     </article>
 </main>
 <footer th:replace="fragments/fragments :: pagefooter"/>

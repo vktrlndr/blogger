@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Blogger | Index</title>
-    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
 </head>
 <body>
 <header th:replace="fragments/fragments :: pageheader"/>
-<main><h2>This is the index page</h2>
-<p>
-    This page will include some <strong>links</strong>.
-</p>
+<h2>Welcome to the index page</h2>
+<br/>
+<br/>
+<main id="articles">
+    <article th:each="a : ${allarticles}">
+        <h3 class="title" th:text="${a.title}">Title</h3>
+        <p> Subject: <span class="subject" th:text="${a.subject}">subject</span></p>
+        <p> Last updated: <span class="published" th:text="${a.published}">published</span></p>
+        <p class="content" th:text="${a.content}">content</p>
+        <br/>
+        <hr/>
+    </article>
 </main>
 <footer th:replace="fragments/fragments :: pagefooter"/>
 </body>

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import se.newton.blogger.models.Article;
 import se.newton.blogger.repositories.ArticleRepository;
+import se.newton.blogger.services.ArticleService;
 
 import java.util.List;
 import java.util.Objects;
@@ -12,22 +13,22 @@ import java.util.Objects;
 @RestController
 public class ArticleController {
     @Autowired
-    ArticleRepository ar;
+            ArticleRepository ar;
+    ArticleService aserv;
 
     @GetMapping("/getbyid/{id}")
     public Article getById(@PathVariable Integer id) {
-
-        return ar.getById(id);
+        return aserv.getById(id);
     }
 
     @GetMapping("/allarticles")
     public Iterable<Article> getArticles() {
-        return ar.findAll();
+        return aserv.getAll();
     }
 
     @PostMapping("/addarticle")
-    public Article addArticle(@RequestBody Article newArticle) {
-        return ar.save(new Article(newArticle.getTitle(), newArticle.getContent(), newArticle.getSubject()));
+    public Article addArticle(@ModelAttribute Article newArticle) {
+        return aserv.save(new Article(newArticle.getTitle(), newArticle.getContent(), newArticle.getSubject()));
     }
 
     @PutMapping("/update/{id}")
@@ -43,8 +44,9 @@ public class ArticleController {
     @DeleteMapping("/deletearticle/{id}")
     public String deleteArticle(@PathVariable Integer id) {
         Article deleted = getById(id);
-        String response = "Deleted article " + deleted.getId() + ", " + "\"" + deleted.getTitle() + "\"";
-        ar.deleteById(id);
-        return response;
+//        String response = "Deleted article " + deleted.getId() + ", " + "\"" + deleted.getTitle() + "\"";
+        ar.delete(deleted);
+        aserv.delete(id);
+        return "index";
     }
 }
