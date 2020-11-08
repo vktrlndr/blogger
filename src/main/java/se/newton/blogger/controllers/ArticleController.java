@@ -15,7 +15,7 @@ public class ArticleController {
     ArticleRepository ar;
 
     @GetMapping("/getbyid/{id}")
-    public Article getById(@PathVariable int id) {
+    public Article getById(@PathVariable Integer id) {
 
         return ar.getById(id);
     }
@@ -27,21 +27,21 @@ public class ArticleController {
 
     @PostMapping("/addarticle")
     public Article addArticle(@RequestBody Article newArticle) {
-        return ar.save(new Article(newArticle.getTitle(), newArticle.getContent()));
+        return ar.save(new Article(newArticle.getTitle(), newArticle.getContent(), newArticle.getSubject()));
     }
 
     @PutMapping("/update/{id}")
     public Article updateArticle(
             @PathVariable int id, @RequestBody Article newArticle) {
         if (Objects.nonNull(ar.getById(id))) {
-            return ar.save(new Article(id, newArticle.getTitle(), newArticle.getContent()));
+            return ar.save(new Article(id, newArticle.getTitle(), newArticle.getContent(), newArticle.getSubject()));
         } else return new Article();
         // How can this be made to return something more distinct to warn about the article not being there?
         // Should it have a separate check outside of this method?
     }
 
     @DeleteMapping("/deletearticle/{id}")
-    public String deleteArticle(@PathVariable int id) {
+    public String deleteArticle(@PathVariable Integer id) {
         Article deleted = getById(id);
         String response = "Deleted article " + deleted.getId() + ", " + "\"" + deleted.getTitle() + "\"";
         ar.deleteById(id);
